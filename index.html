@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snowflake Migration Mock-Up</title>
+    <link rel="stylesheet" type="text.css" href="./scss/normalize.css" />
+    <link rel="stylesheet" href="./scss/main.css" />
+    <link rel="stylesheet" href="./scss/fonts.css" />
+    <link rel="stylesheet" href="./scss/fontawesome-all.css" />
+    <link rel="stylesheet" href="./scss/google.css" />
+  </head>
+  <body>
+    <script>
+      const privateKey = "hey I am here!";
+      console.log(privateKey);
+    </script>
+    <div class="Page">
+      <div class="PipelineCreatePage">
+        <div class="Container"><h1>Connect to Snowflake</h1></div>
+        <div class="Container">
+          <div class="SourceAdd">
+            <div class="Group">
+              <button class="Button" type="button">
+                <i class="Icon fas fa-arrow-left"></i>Back
+              </button>
+            </div>
+            <div class="ConnectorForm">
+              <div class="Instructions">
+                <h2>Snowflake Key Pair Authentication Migration</h2>
+                <ol class="InstructionList">
+                  <li class="InstructionList-item">
+                    Log into your Snowflake account.
+                  </li>
+                  <li class="InstructionList-item">
+                    Verify that the name of the <strong>Database</strong>,
+                    <strong>Warehouse</strong>, and <strong>User</strong> are named
+                    <code>precog</code>. If these values have are different than update them in the SQL scirpt below.
+                  </li>
+                  <li class="InstructionList-item">
+                    <p>
+                      Create a new SQL Worksheet. Click on
+                      <strong>+ Create</strong> in the top left navigation and
+                      then choose <strong>SQL Worksheet</strong>.
+                    </p>
+                    <img
+                      class="InstructionsImage"
+                      src="img/sql-worksheet.png"
+                    />
+                  </li>
+                  <li class="InstructionList-item">
+                    <p>
+                      Copy and paste the following SQL statements into the
+                      worksheet:
+                    </p>
+                    <div class="CodeBlock">
+                      <pre class="CodeBlock-code">
+
+ALTER USER precog SET RSA_PUBLIC_KEY='MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv2DlVK6BMWLYYNwmZYIcUSRzpuS2xs8ZF5QDBYpK3TrDiK1Xe2RtXy2zwJUj7P5A9KzPw5BUJ11sAlOit+WspHl2/QkCs7jYzqd7oWIsTGZ0OUhDtbvR+Z2P0rv/uHHWDxQOLAJ4z47x4cMB5vViId+BMJ4+IYcxSzarqAL6YunadLfUne3EI+iCW0QFJZRiUHEidmlKGMJouMqENA067uHHouzUluxrjUvehQELzxSiUrA4Esd/bx28On8oXcQxAgOH2yFAnLOfeIptxsQkYwW5JIGoXDudodrw1rYE/aJAXlTbEdg+ta5ehsRdWVCvk+J8sySUXC5Dl9MxJS6BgwIDAQAB';
+</pre
+                      >
+                      <button class="Button CodeBlock-copyButton" type="button">
+                        <i class="Icon fas fa-clipboard"></i>Copy
+                      </button>
+                    </div>
+                  </li>
+                  <li class="InstructionList-item">
+                    <p>
+                      Click on the <strong>Run</strong> option, blue arrow in top right
+                      corner.
+                    </p>
+                  </li>
+                  
+                  <li class="InstructionList-item">
+                    <p>
+                      Find your Snowflake <strong>Account URL</strong>. Click on
+                      the “Account Admin” option in the bottom left navigation,
+                      displayed as a circle with your initials. Click on
+                      “Account”. In the next panel, click on “View account
+                      details”. Look for the Account/Server URL. Copy and paste
+                      the URL in the form below.
+                    </p>
+                  </li>
+                </ol>
+              </div>
+              <h2>Precog configuration</h2>
+              <div class="KindForm">
+                <label class="Field"
+                  ><div class="Field-label">User</div>
+                  <input class="Input" type="text" placeholder="" /></label
+                ><label class="Field"
+                  ><div class="Field-label">
+                    Private Key<span class="Field-labelOptional"
+                      >(optional)</span
+                    >
+                  </div>
+                  <div class="Field-description">
+                    <p>
+                      If the user has been set up with a public key other than
+                      the one provided in the setup script above, upload the
+                      private key PEM file here. For more information refer to
+                      the
+                      <a
+                        href="https://docs.snowflake.com/en/user-guide/key-pair-auth.html"
+                        >Snowflake documentation</a
+                      >.
+                    </p>
+                  </div>
+                  <label class="Upload"
+                    ><input type="file" class="Upload-file" />
+                    <div class="Button Upload-fileName">
+                      <span class="Upload-fileNameIcon"
+                        ><i class="Icon fas fa-upload"></i></span
+                      >Select file
+                    </div></label
+                  ></label
+                ><label class="Field"
+                  ><div class="Field-label">
+                    Private Key Passphrase<span class="Field-labelOptional"
+                      >(optional)</span
+                    >
+                  </div>
+                  <div class="Field-description">
+                    <p>
+                      Leave empty if you are not providing your own private key
+                      or if the key is not encrypted.
+                    </p>
+                  </div>
+                  <input class="Input" type="password" placeholder=""
+                /></label>
+              </div>
+              <div class="Group">
+                <div class="ButtonGroup">
+                  <button class="Button" type="button">
+                    <i class="Icon fas fa-check"></i>Submit changes
+                  </button>
+                  <button class="Button" type="button">
+                    <i class="Icon fas fa-times"></i>Cancel
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
