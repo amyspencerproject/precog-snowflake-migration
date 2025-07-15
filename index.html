@@ -28,14 +28,12 @@
             <div class="ConnectorForm">
               <div class="Instructions">
                 <h2>Snowflake Key Pair Authentication Migration</h2>
+                <p>
+                  A Service User in Snowflake’s environment provides Precog with programmatic access to write data to your Data Warehouse and Database. To avoid any disruptions in your data flow, you will need to reconfigure your Precog and Snowflake accounts to use Key Pair authentication. Follow the directions below, and when completed successfully, click on the Complete Migration button. 
+                </p>
                 <ol class="InstructionList">
                   <li class="InstructionList-item">
-                    Log into your Snowflake account.
-                  </li>
-                  <li class="InstructionList-item">
-                    Verify that the name of the <strong>Database</strong>,
-                    <strong>Warehouse</strong>, and <strong>User</strong> are named
-                    <code>precog</code>. If these values have are different than update them in the SQL scirpt below.
+                    Log in to your Snowflake account. You must have Account Admin privileges to alter the Service User.
                   </li>
                   <li class="InstructionList-item">
                     <p>
@@ -50,8 +48,7 @@
                   </li>
                   <li class="InstructionList-item">
                     <p>
-                      Copy and paste the following SQL statements into the
-                      worksheet:
+                      The following SQL statement assigns a public key to your Snowflake Service User. The corresponding encrypted private key has already been generated for your Precog configuration. Copy and paste the following SQL statement into the worksheet:
                     </p>
                     <div class="CodeBlock">
                       <pre class="CodeBlock-code">
@@ -66,73 +63,42 @@ ALTER USER precog SET RSA_PUBLIC_KEY='MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQ
                   </li>
                   <li class="InstructionList-item">
                     <p>
-                      Click on the <strong>Run</strong> option, blue arrow in top right
-                      corner.
+                      Click on the <strong>Run</strong> option, the arrow icon in the top right corner.
                     </p>
                   </li>
-                  
                   <li class="InstructionList-item">
                     <p>
-                      Find your Snowflake <strong>Account URL</strong>. Click on
-                      the “Account Admin” option in the bottom left navigation,
-                      displayed as a circle with your initials. Click on
-                      “Account”. In the next panel, click on “View account
-                      details”. Look for the Account/Server URL. Copy and paste
-                      the URL in the form below.
+                      Verify that the "Statement executed successfully" before clicking the Complete Migration button. 
+                    </p>
+                    <img
+                      class="InstructionsImage"
+                      src="img/snowflake-success-rsa-key.png"
+                    />
+                    <!-- <img
+                      class="InstructionsImage"
+                      src="img/snowflake-script-successful.png"
+                    /> -->
+                    <p>
+                      Note or Warning: If you refresh or reload this page, you will need to rerun the SQL statement in Snowflake as the paired private key will have been regenerated.
+                    </p>
+                    <p>
+                      If you already have key-pair authentication set up, or if you want to generate your own key-pair. Click <a href="#">here</a> to be redirected to your Snowflake destination, where you can upload your private key and enter your encryption password. 
+                    </p>
+                  </li>
+                  <li class="InstructionList-item">
+                    <p>
+                      When you are ready, click the Complete Migration button.
                     </p>
                   </li>
                 </ol>
               </div>
-              <h2>Precog configuration</h2>
-              <div class="KindForm">
-                <label class="Field"
-                  ><div class="Field-label">User</div>
-                  <input class="Input" type="text" placeholder="" /></label
-                ><label class="Field"
-                  ><div class="Field-label">
-                    Private Key<span class="Field-labelOptional"
-                      >(optional)</span
-                    >
-                  </div>
-                  <div class="Field-description">
-                    <p>
-                      If the user has been set up with a public key other than
-                      the one provided in the setup script above, upload the
-                      private key PEM file here. For more information refer to
-                      the
-                      <a
-                        href="https://docs.snowflake.com/en/user-guide/key-pair-auth.html"
-                        >Snowflake documentation</a
-                      >.
-                    </p>
-                  </div>
-                  <label class="Upload"
-                    ><input type="file" class="Upload-file" />
-                    <div class="Button Upload-fileName">
-                      <span class="Upload-fileNameIcon"
-                        ><i class="Icon fas fa-upload"></i></span
-                      >Select file
-                    </div></label
-                  ></label
-                ><label class="Field"
-                  ><div class="Field-label">
-                    Private Key Passphrase<span class="Field-labelOptional"
-                      >(optional)</span
-                    >
-                  </div>
-                  <div class="Field-description">
-                    <p>
-                      Leave empty if you are not providing your own private key
-                      or if the key is not encrypted.
-                    </p>
-                  </div>
-                  <input class="Input" type="password" placeholder=""
-                /></label>
-              </div>
               <div class="Group">
                 <div class="ButtonGroup">
                   <button class="Button" type="button">
-                    <i class="Icon fas fa-check"></i>Submit changes
+                    <i class="Icon fas fa-check"></i>Complete Migration
+                  </button>
+                   <button class="Button" type="button">
+                    <i class="Icon fas fa-angle-double-right"></i>Complete Migration
                   </button>
                   <button class="Button" type="button">
                     <i class="Icon fas fa-times"></i>Cancel
