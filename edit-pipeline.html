@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snowflake Migration Mock-Up</title>
+    <link rel="stylesheet" type="text.css" href="./scss/normalize.css" />
+    <link rel="stylesheet" href="./scss/main.css" />
+    <link rel="stylesheet" href="./scss/fonts.css" />
+    <link rel="stylesheet" href="./scss/fontawesome-all.css" />
+    <link rel="stylesheet" href="./scss/google.css" />
+  </head>
+  <body>
+    <script>
+      const privateKey = "hey I am here!";
+      console.log(privateKey);
+    </script>
+    <div class="Page">
+      <div class="ConnectorEditPage">
+        <div class="Container"><h1>Edit Snowflake destination</h1></div>
+        <div class="Container">
+          <div class="ConnectorForm">
+            <div class="KindForm">
+              <label class="Field"
+                ><div class="Field-label">Account</div>
+                <div class="Field-description">
+                  <p>The account identifier as described above.</p>
+                </div>
+                <input
+                  class="Input"
+                  type="text"
+                  placeholder="LEUPVWY-SMB12915.snowflakecomputing.com" /></label
+              ><label class="Field"
+                ><div class="Field-label">Database</div>
+                <input class="Input" type="text" placeholder="precog" /></label
+              ><label class="Field"
+                ><div class="Field-label">Warehouse</div>
+                <input class="Input" type="text" placeholder="precog" /></label
+              ><label class="Field"
+                ><div class="Field-label">User</div>
+                <input class="Input" type="text" placeholder="precog" /></label
+              ><label class="Field"
+                ><div class="Field-label">Role</div>
+                <div class="Field-description">
+                  <p>
+                    If left empty the default role for the user will be used.
+                  </p>
+                </div>
+                <input class="Input" type="text" placeholder="" /></label
+              ><label class="Field"
+                ><div class="Field-label">Password</div>
+                <div class="Field-description">
+                  <p>Can be left empty if key pair authentication is used.</p>
+                </div>
+                <input
+                  class="Input"
+                  type="password"
+                  placeholder="precog" /></label
+              ><label class="Field"
+                ><div class="Field-label">Private key</div>
+                <div class="Field-description">
+                  <p>
+                    Private key in case key pair authentication is set up for
+                    the user, as described in
+                    https://docs.snowflake.com/en/user-guide/key-pair-auth.html.
+                    If there is an issue please refer to
+                    https://community.snowflake.com/s/article/Private-key-provided-is-invalid-or-not-supported-rsa-key-p8--data-isn-t-an-object-ID
+                    in order to resolve. Leave empty if basic,
+                    username/password-based authentication is used.
+                  </p>
+                </div>
+                <label class="Upload"
+                  ><input type="file" class="Upload-file" />
+                  <div class="Button Upload-fileName">
+                    <span class="Upload-fileNameIcon"
+                      ><i class="Icon fas fa-upload"></i></span
+                    >Select file
+                  </div></label
+                ></label
+              ><label class="Field"
+                ><div class="Field-label">Private key passphrase</div>
+                <div class="Field-description">
+                  <p>
+                    Passphrase for private key in case the private key is
+                    encrypted. Leave empty if private key is unencrypted or if
+                    basic, username/password-based authentication is used.
+                  </p>
+                </div>
+                <input class="Input" type="password" placeholder=""
+              /></label>
+            </div>
+            <div class="Group">
+              <div class="ButtonGroup">
+                <button class="Button" type="button">
+                  <i class="Icon fas fa-times"></i>Cancel</button
+                ><button class="Button" type="button">
+                  <i class="Icon fas fa-check"></i>Save destination
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
