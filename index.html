@@ -17,7 +17,9 @@
     </script>
     <div class="Page">
       <div class="PipelineCreatePage">
-        <div class="Container"><h1>Snowflake Migration</h1></div>
+        <div class="Container">
+          <h1>Snowflake Key Pair Authentication Migration</h1>
+        </div>
         <div class="Container">
           <div class="SourceAdd">
             <div class="Group">
@@ -27,13 +29,28 @@
             </div>
             <div class="ConnectorForm">
               <div class="Instructions">
-                <h2>Instructions for Snowflake Key Pair Authentication Migration</h2>
                 <p>
-                  A Service User in Snowflake’s environment provides Precog with programmatic access to write data to your Data Warehouse and Database. To avoid any disruptions in your data flow, you will need to reconfigure your Precog and Snowflake accounts to use Key Pair authentication. Follow the directions below, and when completed successfully, click on the Complete Migration button. 
+                  A Service User in Snowflake’s environment provides Precog with
+                  programmatic access to write data to your Data Warehouse and
+                  Database. To avoid any disruptions in your data flow, you will
+                  need to reconfigure your Precog and Snowflake accounts to use
+                  Key Pair authentication. Follow the directions below, and once
+                  you have completed them successfully, click on the
+                  <strong>Complete Migration</strong> button.
                 </p>
+                <p>
+                  If you already have key-pair authentication set up, or if you
+                  want to generate your own key-pair. Click
+                  <a href="edit-pipeline.html">here</a> to be redirected to your
+                  Snowflake destination, where you can upload your private key
+                  and enter your encryption password.
+                </p>
+                <!-- <p>For more information refer to the <a href="https://docs.snowflake.com/en/user-guide/key-pair-auth">Snowflake documentation</a>.</p> -->
+                <h2>Instructions</h2>
                 <ol class="InstructionList">
                   <li class="InstructionList-item">
-                    Log in to your Snowflake account. You must have Account Admin privileges to alter the Service User.
+                    Log in to your Snowflake account. You must have Account
+                    Admin privileges to alter the Service User.
                   </li>
                   <li class="InstructionList-item">
                     <p>
@@ -48,7 +65,11 @@
                   </li>
                   <li class="InstructionList-item">
                     <p>
-                      The following SQL statement assigns a public key to your Snowflake Service User. The corresponding encrypted private key has already been generated for your Precog configuration. Copy and paste the following SQL statement into the worksheet:
+                      The following SQL statement assigns a public key to your
+                      Snowflake Service User. The corresponding encrypted
+                      private key has already been generated for your Precog
+                      configuration. Copy and paste the following SQL statement
+                      into the worksheet:
                     </p>
                     <div class="CodeBlock">
                       <pre class="CodeBlock-code">
@@ -63,12 +84,14 @@ ALTER USER precog SET RSA_PUBLIC_KEY='MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQ
                   </li>
                   <li class="InstructionList-item">
                     <p>
-                      Click on the <strong>Run</strong> option, the arrow icon in the top right corner.
+                      Click on the <strong>Run</strong> option, the arrow icon
+                      in the top right corner.
                     </p>
                   </li>
                   <li class="InstructionList-item">
                     <p>
-                      Verify that the "Statement executed successfully" before clicking the Complete Migration button. 
+                      Verify that the "Statement executed successfully" before
+                      clicking the Complete Migration button.
                     </p>
                     <img
                       class="InstructionsImage"
@@ -79,10 +102,9 @@ ALTER USER precog SET RSA_PUBLIC_KEY='MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQ
                       src="img/snowflake-script-successful.png"
                     /> -->
                     <p>
-                      Note or Warning: If you refresh or reload this page, you will need to rerun the SQL statement in Snowflake as the paired private key will have been regenerated.
-                    </p>
-                    <p>
-                      If you already have key-pair authentication set up, or if you want to generate your own key-pair. Click <a href="edit-pipeline.html">here</a> to be redirected to your Snowflake destination, where you can upload your private key and enter your encryption password. 
+                      <strong>Note:</strong> If you refresh or reload this page,
+                      you will need to rerun the SQL statement in Snowflake as
+                      the paired private key will have been regenerated.
                     </p>
                   </li>
                   <li class="InstructionList-item">
@@ -94,14 +116,16 @@ ALTER USER precog SET RSA_PUBLIC_KEY='MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQ
               </div>
               <div class="Group">
                 <div class="ButtonGroup">
+                  <button class="Button" type="button">
+                    <i class="Icon fas fa-times"></i>Cancel
+                  </button>
                   <a class="Button" type="button" href="submitted.html">
                     <i class="Icon fas fa-check"></i>Complete Migration
                   </a>
-                   <a class="Button" type="button" href="submitted.html">
-                    <i class="Icon fas fa-angle-double-right"></i>Complete Migration
-                   </a>
-                  <button class="Button" type="button">
-                    <i class="Icon fas fa-times"></i>Cancel
+                  <!-- <a class="Button" type="button" href="submitted.html">
+                    <i class="Icon fas fa-angle-double-right"></i>Complete
+                    Migration
+                  </a> -->
                 </div>
               </div>
             </div>
