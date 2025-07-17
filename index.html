@@ -30,12 +30,15 @@
             <div class="ConnectorForm">
               <div class="Instructions">
                 <p>
-                  A Service User in Snowflake’s environment provides Precog with
-                  programmatic access to write data to your Data Warehouse and
-                  Database. To avoid any disruptions in your data flow, you will
-                  need to reconfigure your Precog and Snowflake accounts to use
-                  Key Pair authentication. Follow the directions below, and once
-                  you have completed them successfully, click on the
+                  Snowflake is phasing out password-based credentials for
+                  service accounts. A service account gives Precog access to
+                  write to your data warehouse and database. If your Snowflake
+                  destination is configured with password-based credentials,
+                  then your Precog data pipelines are at risk. To avoid any
+                  disruptions in your data flow, you will need to reconfigure
+                  your Precog and Snowflake accounts to use Key Pair
+                  authentication. Follow the directions below, and once you have
+                  completed them successfully, click on the
                   <strong>Complete Migration</strong> button.
                 </p>
                 <p>
@@ -43,14 +46,25 @@
                   want to generate your own key-pair. Click
                   <a href="edit-pipeline.html">here</a> to be redirected to your
                   Snowflake destination, where you can upload your private key
-                  and enter your encryption password.
+                  and enter your encryption password. For more information refer
+                  to the
+                  <a
+                    href="https://docs.snowflake.com/en/user-guide/key-pair-auth"
+                    >Snowflake Key Pair documentation</a
+                  >.
                 </p>
-                <!-- <p>For more information refer to the <a href="https://docs.snowflake.com/en/user-guide/key-pair-auth">Snowflake documentation</a>.</p> -->
+                <!-- <p>
+                  For more information refer to the
+                  <a
+                    href="https://docs.snowflake.com/en/user-guide/key-pair-auth"
+                    >Snowflake documentation</a
+                  >.
+                </p> -->
                 <h2>Instructions</h2>
                 <ol class="InstructionList">
                   <li class="InstructionList-item">
                     Log in to your Snowflake account. You must have Account
-                    Admin privileges to alter the Service User.
+                    Admin privileges to alter the service account.
                   </li>
                   <li class="InstructionList-item">
                     <p>
@@ -66,7 +80,7 @@
                   <li class="InstructionList-item">
                     <p>
                       The following SQL statement assigns a public key to your
-                      Snowflake Service User. The corresponding encrypted
+                      Snowflake service account. The corresponding encrypted
                       private key has already been generated for your Precog
                       configuration. Copy and paste the following SQL statement
                       into the worksheet:
@@ -97,10 +111,6 @@ ALTER USER precog SET RSA_PUBLIC_KEY='MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQ
                       class="InstructionsImage"
                       src="img/snowflake-success-rsa-key.png"
                     />
-                    <!-- <img
-                      class="InstructionsImage"
-                      src="img/snowflake-script-successful.png"
-                    /> -->
                     <p>
                       <strong>Note:</strong> If you refresh or reload this page,
                       you will need to rerun the SQL statement in Snowflake as
